@@ -145,6 +145,16 @@ install_demeteorizer() {
   header "Demeteorizer installed"
 }
 
+install_mgp() {
+  npm install -g mgp | output "$LOG_FILE"
+  header "Mgp installed"
+}
+
+run_mgp() {
+  mgp | output "$LOG_FILE"
+  header "Mgp dependencies installed"
+}
+
 remove_uninstallable_modules() {
   # Separe the modules names with '\n'
   uninstallable_modules="1to2"
@@ -177,6 +187,8 @@ demeteorize_app() {
 
   install_meteorite_deps "$build_dir" "$cache_dir"
   install_demeteorizer
+  install_mgp
+  run_mgp
   check_meteorhacks_npm
 
   remove_mobile_platforms "$build_dir"
